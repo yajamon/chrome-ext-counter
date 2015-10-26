@@ -11,6 +11,6 @@
             "19": "img/icon19.png"
         },
         "default_title": "countExt",
-        "default_popup": "index.html"
+        "default_popup": "html/index.html"
     }
 }
