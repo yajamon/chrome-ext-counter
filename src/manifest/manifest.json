@@ -3,7 +3,6 @@
     "name": "counterExt",
     "version": "0.1.0",
     
-    "default_locale": "ja_JP",
     "description": "シンプルなカウンター拡張",
     "icons": {
         "16": "img/icons/icon16.png",
