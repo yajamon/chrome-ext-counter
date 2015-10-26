@@ -13,12 +13,14 @@ var path = {
         html: "src/html/**/*.html",
         ts: "src/ts/**/*.ts",
         less: "src/less/**/*.less",
+        img: "src/img/**/*.*",
         manifest:"src/manifest/manifest.json",
     },
     dest : {
         html: "dest/html/",
         js: "dest/js/",
         css: "dest/css/",
+        img: "dest/img/",
         root: "dest/",
     }
 };
@@ -27,9 +29,21 @@ var tsProject = ts.createProject('src/tsconfig.json', {out: "app.js"});
 
 // main tasks
 
-gulp.task('build', ['build:html', 'build:ts', 'build:less', 'build:manifest']);
+gulp.task('build', [
+    'build:html',
+    'build:ts',
+    'build:less',
+    'build:img',
+    'build:manifest'
+]);
 
-gulp.task('watch', ['watch:html', 'watch:ts', 'watch:less', 'watch:manifest']);
+gulp.task('watch', [
+    'watch:html',
+    'watch:ts',
+    'watch:less',
+    'watch:img',
+    'watch:manifest'
+]);
 
 // sub tasks
 
@@ -51,6 +65,11 @@ gulp.task('build:less', function(){
         .pipe(gulp.dest(path.dest.css));
 });
 
+gulp.task('build:img', function(){
+    gulp.src(path.src.img)
+        .pipe(gulp.dest(path.dest.img));
+});
+
 gulp.task('build:manifest', function () {
     gulp.src(path.src.manifest)
         .pipe(gulp.dest(path.dest.root));
@@ -66,6 +85,10 @@ gulp.task('watch:ts', function(){
 
 gulp.task('watch:less', function(){
     gulp.watch(path.src.less, ['build:less']);
+});
+
+gulp.task('watch:img', function(){
+    gulp.watch(path.src.img, ['build:img']);
 });
 
 gulp.task('watch:manifest', function(){
