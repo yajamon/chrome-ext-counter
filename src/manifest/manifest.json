@@ -5,10 +5,15 @@
     
     "default_locale": "ja_JP",
     "description": "シンプルなカウンター拡張",
-
+    "icons": {
+        "16": "img/icons/icon16.png",
+        "48": "img/icons/icon48.png",
+        "128": "img/icons/icon128.png"
+    },
+    
     "browser_action": {
         "default_icon": {
-            "19": "img/icon19.png"
+            "19": "img/icons/icon19.png"
         },
         "default_title": "countExt",
         "default_popup": "html/index.html"
