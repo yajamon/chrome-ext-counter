@@ -1,7 +1,7 @@
 {
-  "name": "typescript-project-sample",
+  "name": "chrome-ext-counter",
   "version": "0.1.0",
-  "description": "typescript-project-sample",
+  "description": "chrome-ext-counter",
   "main": "gulpfile.js",
   "scripts": {
     "postinstall": "dtsm install",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://yajamon@github.com/yajamon/typescript-project-sample.git"
+    "url": "git+https://yajamon@github.com/yajamon/chrome-ext-counter.git"
   },
   "author": "yajamon <yajamon.tatsuki@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yajamon/typescript-project-sample/issues"
+    "url": "https://github.com/yajamon/chrome-ext-counter/issues"
   },
-  "homepage": "https://github.com/yajamon/typescript-project-sample#readme",
+  "homepage": "https://github.com/yajamon/chrome-ext-counter#readme",
   "devDependencies": {
     "dtsm": "^0.10.3",
     "gulp": "^3.9.0",

@@ -1,4 +1,4 @@
-# Typescript project sample
+# Chrome extention Counter
 
 ## setup
 
