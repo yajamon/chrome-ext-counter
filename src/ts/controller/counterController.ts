@@ -8,7 +8,7 @@ namespace YJMCNT {
         }
         
         show(){
-            var view = new IndexView();
+            var view = new CounterView();
             this.dom.appendChild(view.render());
         }
         
