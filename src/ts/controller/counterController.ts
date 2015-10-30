@@ -5,13 +5,18 @@ namespace YJMCNT {
      * CounterController
      */
     export class CounterController extends Core.Controller {
+        counter:Counter;
+        countView:CounterView;
+        
         constructor(private dom:Element) {
             super();
+            this.countView = new CounterView();
+            this.countView.addObserver(this);
+            this.counter = this.countView.counter;
         }
         
         show(){
-            var view = new CounterView();
-            view.addObserver(this);
+            var view = this.countView;
             
             var content = view.render();
             
@@ -19,7 +24,7 @@ namespace YJMCNT {
         }
         
         update(){
-            var view = new CounterView();
+            var view = this.countView;
             
             while (this.dom.firstChild) {
                 this.dom.removeChild(this.dom.firstChild);
