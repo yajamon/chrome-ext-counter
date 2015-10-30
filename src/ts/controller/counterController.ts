@@ -19,6 +19,7 @@ namespace YJMCNT {
             var view = this.countView;
             
             var content = view.render();
+            this.bindCountUp(content);
             
             this.dom.appendChild(content);
         }
@@ -31,8 +32,17 @@ namespace YJMCNT {
             }
 
             var content = view.render();
+            this.bindCountUp(content);
 
             this.dom.appendChild(content);
+        }
+        
+        bindCountUp(hasButtonDom:Element){
+            var upButton = hasButtonDom.querySelector(".countUp");
+            upButton.addEventListener("click",(e)=>{
+                e.preventDefault();
+                this.counter.up(1);
+            });
         }
     }
 }
