@@ -2,7 +2,7 @@ namespace YJMCNT {
     /**
      * CounterView
      */
-    class CounterView extends Core.View {
+    export class CounterView extends Core.View {
         counter:Counter;
         
         constructor() {
@@ -16,7 +16,12 @@ namespace YJMCNT {
             countView.classList.add("count");
             countView.innerText = "count: "+this.counter.show().toString();
             
+            var countUpButton:HTMLButtonElement = document.createElement("button");
+            countUpButton.innerHTML = "Up";
+            countUpButton.classList.add("countUp");
+            
             counter.appendChild(countView);
+            counter.appendChild(countUpButton);
             return counter;
         }
         update() {
