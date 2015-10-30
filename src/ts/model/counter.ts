@@ -2,7 +2,7 @@ namespace YJMCNT {
     /**
      * Counter
      */
-    class Counter extends Core.Model {
+    export class Counter extends Core.Model {
         private _value:number;
         
         constructor() {
