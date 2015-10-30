@@ -7,6 +7,7 @@ namespace YJMCNT {
         
         constructor() {
             super();
+            this._value = 0;
         }
         
         up (val:number){
