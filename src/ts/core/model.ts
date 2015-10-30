@@ -2,7 +2,7 @@ namespace YJMCNT.Core {
     /**
      * Model
      */
-    export class Model implements Core.Subject{
+    export class Model implements Subject{
         observerList:Core.Observer[]; 
 
         constructor() {
