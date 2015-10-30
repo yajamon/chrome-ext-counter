@@ -9,5 +9,8 @@ namespace YJMCNT.Core {
         update():void {
         }
         
+        render():Element {
+            return document.createElement("div");
+        }
     }
 }
