@@ -6,6 +6,7 @@ namespace YJMCNT.Core {
         observerList:Observer[]; 
 
         constructor() {
+            this.observerList = [];
         }
         
         update():void {
