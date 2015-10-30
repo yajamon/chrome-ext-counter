@@ -1,3 +1,5 @@
+/// <reference path="../core/controller" />
+
 namespace YJMCNT {
     /**
      * CounterController
@@ -9,11 +11,18 @@ namespace YJMCNT {
         
         show(){
             var view = new CounterView();
+            view.addObserver(this);
+            
             this.dom.appendChild(view.render());
         }
         
         update(){
-            this.show();
+            var view = new CounterView();
+            
+            while (this.dom.firstChild) {
+                this.dom.removeChild(this.dom.firstChild);
+            }
+            this.dom.appendChild(view.render());
         }
     }
 }
