@@ -13,7 +13,9 @@ namespace YJMCNT {
             var view = new CounterView();
             view.addObserver(this);
             
-            this.dom.appendChild(view.render());
+            var content = view.render();
+            
+            this.dom.appendChild(content);
         }
         
         update(){
@@ -22,7 +24,10 @@ namespace YJMCNT {
             while (this.dom.firstChild) {
                 this.dom.removeChild(this.dom.firstChild);
             }
-            this.dom.appendChild(view.render());
+
+            var content = view.render();
+
+            this.dom.appendChild(content);
         }
     }
 }
