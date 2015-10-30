@@ -12,6 +12,7 @@ namespace YJMCNT {
         
         up (val:number){
             this.value += val;
+            this.notifyObservers();
         }
         
         show (){
