@@ -8,7 +8,7 @@ namespace YJMCNT {
         counter:Counter;
         countView:CounterView;
         
-        constructor(private dom:Element) {
+        constructor(private $element:JQuery) {
             super();
             this.countView = new CounterView();
             this.countView.addObserver(this);
@@ -22,21 +22,19 @@ namespace YJMCNT {
             this.bindCountUp(content);
             this.bindCountDown(content);
             
-            this.dom.appendChild(content);
+            this.$element.append(content);
         }
         
         update(){
             var view = this.countView;
             
-            while (this.dom.firstChild) {
-                this.dom.removeChild(this.dom.firstChild);
-            }
+            this.$element.empty();
 
             var content = view.render();
             this.bindCountUp(content);
             this.bindCountDown(content);
 
-            this.dom.appendChild(content);
+            this.$element.append(content);
         }
         
         bindCountUp(hasButtonDom:Element){
