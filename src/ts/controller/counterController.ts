@@ -47,6 +47,12 @@ namespace YJMCNT {
                 e.preventDefault();
                 this.counter.down(1);
             });
+            
+            var resetButton = hasButtonsDom.find(".countReset");
+            resetButton.on("click", (e)=>{
+                e.preventDefault();
+                this.counter.reset();
+            });
         }
         
     }
