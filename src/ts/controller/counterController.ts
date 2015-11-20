@@ -18,7 +18,7 @@ namespace YJMCNT {
         show(){
             var view = this.countView;
             
-            var content = $(view.render());
+            var content = view.render();
             this.bindCountUp(content);
             this.bindCountDown(content);
             
@@ -30,7 +30,7 @@ namespace YJMCNT {
             
             this.$element.empty();
 
-            var content = $(view.render());
+            var content = view.render();
             this.bindCountUp(content);
             this.bindCountDown(content);
 

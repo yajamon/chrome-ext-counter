@@ -22,8 +22,8 @@ namespace YJMCNT.Core {
             }
         }
         
-        render():Element {
-            return document.createElement("div");
+        render():JQuery {
+            return $("<div>");
         }
     }
 }
