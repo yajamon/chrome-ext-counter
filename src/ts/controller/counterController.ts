@@ -20,6 +20,7 @@ namespace YJMCNT {
             
             var content = view.render();
             this.bindCountUp(content);
+            this.bindCountDown(content);
             
             this.dom.appendChild(content);
         }
@@ -33,6 +34,7 @@ namespace YJMCNT {
 
             var content = view.render();
             this.bindCountUp(content);
+            this.bindCountDown(content);
 
             this.dom.appendChild(content);
         }
@@ -44,5 +46,14 @@ namespace YJMCNT {
                 this.counter.up(1);
             });
         }
+        
+        bindCountDown(hasButtonDom:Element){
+            var downButton = hasButtonDom.querySelector(".countDown");
+            downButton.addEventListener("click",(e)=>{
+                e.preventDefault();
+                this.counter.down(1);
+            });
+        }
+        
     }
 }
