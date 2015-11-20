@@ -15,6 +15,11 @@ namespace YJMCNT {
             this.notifyObservers();
         }
         
+        down (val:number){
+            this.value -= val;
+            this.notifyObservers();
+        }
+        
         show (){
             return this._value;
         }
