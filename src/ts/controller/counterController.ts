@@ -18,7 +18,7 @@ namespace YJMCNT {
         show(){
             var view = this.countView;
             
-            var content = view.render();
+            var content = $(view.render());
             this.bindCountUp(content);
             this.bindCountDown(content);
             
@@ -30,24 +30,24 @@ namespace YJMCNT {
             
             this.$element.empty();
 
-            var content = view.render();
+            var content = $(view.render());
             this.bindCountUp(content);
             this.bindCountDown(content);
 
             this.$element.append(content);
         }
         
-        bindCountUp(hasButtonDom:Element){
-            var upButton = hasButtonDom.querySelector(".countUp");
-            upButton.addEventListener("click",(e)=>{
+        bindCountUp(hasButtonDom:JQuery){
+            var upButton = hasButtonDom.find(".countUp");
+            upButton.on("click",(e)=>{
                 e.preventDefault();
                 this.counter.up(1);
             });
         }
         
-        bindCountDown(hasButtonDom:Element){
-            var downButton = hasButtonDom.querySelector(".countDown");
-            downButton.addEventListener("click",(e)=>{
+        bindCountDown(hasButtonDom:JQuery){
+            var downButton = hasButtonDom.find(".countDown");
+            downButton.on("click",(e)=>{
                 e.preventDefault();
                 this.counter.down(1);
             });
