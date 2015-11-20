@@ -15,6 +15,9 @@ var path = {
         less: "src/less/**/*.less",
         img: "src/img/**/*.*",
         manifest:"src/manifest/manifest.json",
+        vendor: {
+            jquery: "node_modules/jquery/dist/jquery.min.js",
+        },
     },
     dest : {
         html: "dest/html/",
@@ -22,6 +25,10 @@ var path = {
         css: "dest/css/",
         img: "dest/img/",
         root: "dest/",
+        vendor: {
+            root: "dest/vendor/",
+            jquery: "dest/vendor/jquery/",
+        },
     }
 };
 
@@ -34,7 +41,8 @@ gulp.task('build', [
     'build:ts',
     'build:less',
     'build:img',
-    'build:manifest'
+    'build:manifest',
+    'build:vendor'
 ]);
 
 gulp.task('watch', [
@@ -73,6 +81,11 @@ gulp.task('build:img', function(){
 gulp.task('build:manifest', function () {
     gulp.src(path.src.manifest)
         .pipe(gulp.dest(path.dest.root));
+});
+
+gulp.task('build:vendor', function (){
+    gulp.src(path.src.vendor.jquery)
+        .pipe(gulp.dest(path.dest.vendor.jquery));
 });
 
 gulp.task('watch:html', function(){

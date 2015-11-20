@@ -11,22 +11,22 @@ namespace YJMCNT {
             this.counter.addObserver(this);
         }
         render() {
-            var counter = document.createElement("div");
-            var countView = document.createElement("span");
-            countView.classList.add("count");
-            countView.innerText = "count: "+this.counter.show().toString();
+            var counter = $("<div>");
+            var countView = $("<span>");
+            countView.addClass("count");
+            countView.html( "count: "+this.counter.show().toString() );
             
-            var countUpButton:HTMLButtonElement = document.createElement("button");
-            countUpButton.innerHTML = "Up";
-            countUpButton.classList.add("countUp");
+            var countUpButton = $("<button>");
+            countUpButton.html("Up");
+            countUpButton.addClass("countUp");
             
-            var countDownButton:HTMLButtonElement = document.createElement("button");
-            countDownButton.innerHTML = "Down";
-            countDownButton.classList.add("countDown");
+            var countDownButton = $("<button>");
+            countDownButton.html("Down");
+            countDownButton.addClass("countDown");
             
-            counter.appendChild(countView);
-            counter.appendChild(countUpButton);
-            counter.appendChild(countDownButton);
+            counter.append(countView);
+            counter.append(countUpButton);
+            counter.append(countDownButton);
             return counter;
         }
         update() {
