@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "dtsm install",
     "build": "gulp build",
-    "prewatch":"gulp build",
+    "prewatch": "gulp build",
     "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
