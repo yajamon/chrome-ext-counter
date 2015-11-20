@@ -16,17 +16,21 @@ namespace YJMCNT {
             countView.addClass("count");
             countView.html( "count: "+this.counter.show().toString() );
             
+            var manipulate = $("<div>");
+            manipulate.addClass("manipulate");
+            
             var countUpButton = $("<button>");
             countUpButton.html("Up");
             countUpButton.addClass("countUp");
+            countUpButton.appendTo(manipulate);
             
             var countDownButton = $("<button>");
             countDownButton.html("Down");
             countDownButton.addClass("countDown");
+            countDownButton.appendTo(manipulate);
             
             counter.append(countView);
-            counter.append(countUpButton);
-            counter.append(countDownButton);
+            counter.append(manipulate);
             return counter;
         }
         update() {
