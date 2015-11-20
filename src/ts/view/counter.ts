@@ -20,8 +20,13 @@ namespace YJMCNT {
             countUpButton.innerHTML = "Up";
             countUpButton.classList.add("countUp");
             
+            var countDownButton:HTMLButtonElement = document.createElement("button");
+            countDownButton.innerHTML = "Down";
+            countDownButton.classList.add("countDown");
+            
             counter.appendChild(countView);
             counter.appendChild(countUpButton);
+            counter.appendChild(countDownButton);
             return counter;
         }
         update() {
