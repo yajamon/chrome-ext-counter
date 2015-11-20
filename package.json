@@ -25,6 +25,7 @@
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.3",
     "gulp-typescript": "^2.8.1",
+    "jquery": "^2.1.4",
     "typescript": "^1.5.3"
   }
 }
