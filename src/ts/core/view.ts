@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/jquery/jquery" />
+
 namespace YJMCNT.Core {
     /**
      * View
@@ -22,7 +24,7 @@ namespace YJMCNT.Core {
             }
         }
         
-        render():JQuery {
+        render(): JQuery {
             return $("<div>");
         }
     }

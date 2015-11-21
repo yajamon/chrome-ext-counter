@@ -1,3 +1,6 @@
+/// <reference path="../core/view" />
+/// <reference path="../model/counter" />
+
 namespace YJMCNT {
     /**
      * CounterView
