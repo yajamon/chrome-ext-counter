@@ -1,4 +1,6 @@
 /// <reference path="../core/controller" />
+/// <reference path="../view/counter" />
+
 
 namespace YJMCNT {
     /**

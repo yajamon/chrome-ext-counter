@@ -1,4 +1,6 @@
 /// <reference path="../../typings/jquery/jquery" />
+/// <reference path="controller/counterController" />
+
 
 $(function(){
     var dom = $('.yjmcnt-index');
