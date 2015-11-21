@@ -1,3 +1,5 @@
+/// <reference path="../core/model" />
+
 namespace YJMCNT {
     /**
      * Counter

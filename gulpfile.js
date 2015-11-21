@@ -32,7 +32,7 @@ var path = {
     }
 };
 
-var tsProject = ts.createProject('src/tsconfig.json', {out: "app.js"});
+var tsProject = ts.createProject('src/tsconfig.json', {out: "app.js", sortOutput: true});
 
 // main tasks
 
