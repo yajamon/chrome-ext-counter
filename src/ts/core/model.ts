@@ -1,3 +1,5 @@
+/// <reference path="indexeddbAdapter" />
+
 namespace YJMCNT.Core {
     /**
      * Model
@@ -18,5 +20,10 @@ namespace YJMCNT.Core {
                 observer.update();
             }
         }
+        
+        private get db() :IDBDatabase {
+            return IndexedDBAdapter.getInstance().db;
+        }
+        
     }
 }
