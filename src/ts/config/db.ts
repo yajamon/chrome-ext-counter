@@ -2,7 +2,7 @@
 
 namespace YJMCNT.Config.DB {
     export const name = 'counter';
-    export const version = 0;
+    export const version = 1;
     export const READONLY = "readonry";
     export const READWRITE = "readwrite";
     
@@ -11,6 +11,7 @@ namespace YJMCNT.Config.DB {
         new Migrater((db: IDBDatabase) => {
         }),
         new Migrater((db: IDBDatabase) => {
+            db.createObjectStore('counters', { keyPath: "id" });
         }),
     ]);
 }
