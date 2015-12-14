@@ -1,3 +1,5 @@
+/// <reference path="migraterList" />
+
 namespace YJMCNT.Core {
     /**
      * IndexedDBAdapter
@@ -25,7 +27,7 @@ namespace YJMCNT.Core {
         /**
          * open
          */
-        public openDatabase(name:string, version?:number) {
+        public openDatabase(name: string, version?: number, migraterList?:MigraterList) {
             if (this.db){
                 return;
             }
@@ -35,9 +37,7 @@ namespace YJMCNT.Core {
                 this.db = openRequest.result;
             };
             openRequest.onupgradeneeded = (event:IDBVersionChangeEvent)=>{
-                var req = <IDBOpenDBRequest>event.target;
-                var db = <IDBDatabase>req.result;
-                
+                migraterList.migration(event);
             };
         }
         
