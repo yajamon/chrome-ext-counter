@@ -16,7 +16,7 @@ namespace YJMCNT.Core {
             var oldVersion = event.oldVersion || 0;
             var newVersion = event.newVersion;
             
-            for (var index = oldVersion; index <= newVersion; index++) {
+            for (var index = (oldVersion+1); index <= newVersion; index++) {
                 var element = this.migraters[index];
                 element.up(db);
             }
