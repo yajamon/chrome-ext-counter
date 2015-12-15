@@ -1,6 +1,6 @@
 /// <reference path="../core/controller" />
 /// <reference path="../view/counter" />
-
+/// <reference path="../view/addCounter" />
 
 namespace YJMCNT {
     /**
@@ -8,21 +8,26 @@ namespace YJMCNT {
      */
     export class CounterController extends Core.Controller {
         counter:Counter;
-        countView:CounterView;
+        countView: CounterView;
+        addCounterView: AddCounterView;
         
         constructor(private $element:JQuery) {
             super();
+            this.addCounterView = new AddCounterView();
             this.countView = new CounterView();
             this.countView.addObserver(this);
             this.counter = this.countView.counter;
         }
         
-        show(){
+        show() {
             var view = this.countView;
             
             var content = view.render();
+            var addContent = this.addCounterView.render();
+            addContent.clone().insertBefore(content);
+
             this.bindManipulate(content);
-            
+
             this.$element.append(content);
         }
         
