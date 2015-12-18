@@ -25,7 +25,7 @@ namespace YJMCNT.Core {
         }
         
         render(): JQuery {
-            return $("<div>");
+            return $();
         }
     }
 }
