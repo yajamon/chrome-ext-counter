@@ -20,10 +20,10 @@ namespace YJMCNT.Core {
                 observer.update();
             }
         }
-        
-        private get db() :IDBDatabase {
+
+        protected get db() :IDBDatabase {
             return IndexedDBAdapter.getInstance().db;
         }
-        
+
     }
 }
