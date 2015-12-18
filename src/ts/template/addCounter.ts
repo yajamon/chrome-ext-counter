@@ -17,8 +17,8 @@ namespace YJMCNT {
             manipulate.addClass("manipulate");
 
             var addCounterButton = $("<button>");
-            addCounterButton.html("AddCounter");
-            addCounterButton.addClass("AddCounter");
+            addCounterButton.html("addCounter");
+            addCounterButton.addClass("addCounter");
             addCounterButton.appendTo(manipulate);
 
             counter.append(manipulate);
