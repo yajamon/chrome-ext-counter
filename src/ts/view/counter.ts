@@ -15,10 +15,10 @@ namespace YJMCNT {
             this.counter.addObserver(this);
         }
         render() {
-            var counterTenplate = new CounterTemplate();
-            counterTenplate.count = this.counter.show();
+            var counterTemplate = new CounterTemplate();
+            counterTemplate.count = this.counter.show();
             
-            return counterTenplate.render();
+            return counterTemplate.render();
         }
         update() {
             this.notifyObservers();
