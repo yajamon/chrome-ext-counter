@@ -7,6 +7,7 @@ namespace YJMCNT {
      * CounterController
      */
     export class CounterController extends Core.Controller {
+        countersStore: CountersStore;
         counter: Counter;
         countView: CounterView;
 
@@ -14,6 +15,7 @@ namespace YJMCNT {
             super();
             this.countView = new CounterView();
             this.countView.addObserver(this);
+            this.countersStore = this.countView.countersStore;
             this.counter = this.countView.counter;
         }
 
@@ -38,6 +40,12 @@ namespace YJMCNT {
         }
 
         bindManipulate(hasButtonsDom: JQuery) {
+            var addButton = hasButtonsDom.find(".addCounter");
+            addButton.on("click", (e)=>{
+                e.preventDefault();
+                this.countersStore.add();
+            });
+
             var upButton = hasButtonsDom.find(".countUp");
             upButton.on("click", (e) => {
                 e.preventDefault();
