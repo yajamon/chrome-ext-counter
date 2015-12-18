@@ -15,7 +15,7 @@ namespace YJMCNT.Core {
             var db = <IDBDatabase>target.result;
             var oldVersion = event.oldVersion || 0;
             var newVersion = event.newVersion;
-            
+
             for (var index = (oldVersion+1); index <= newVersion; index++) {
                 var element = this.migraters[index];
                 element.up(db);

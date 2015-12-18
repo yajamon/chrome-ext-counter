@@ -5,7 +5,7 @@ namespace YJMCNT.Config.DB {
     export const version = 1;
     export const READONLY = "readonry";
     export const READWRITE = "readwrite";
-    
+
     var Migrater = YJMCNT.Core.Migrater;
     export const migraters = new YJMCNT.Core.MigraterList([
         new Migrater((db: IDBDatabase) => {

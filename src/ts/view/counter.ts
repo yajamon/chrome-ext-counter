@@ -9,7 +9,7 @@ namespace YJMCNT {
      */
     export class CounterView extends Core.View {
         counter:Counter;
-        
+
         constructor() {
             super();
             this.counter = new Counter();
@@ -17,14 +17,14 @@ namespace YJMCNT {
         }
         render() {
             var context = $();
-            
+
             var addCounterTemplate = new AddCounterTemplate();
             context = addCounterTemplate.render();
-            
+
             var counterTemplate = new CounterTemplate();
             counterTemplate.count = this.counter.show();
             context = context.add(counterTemplate.render());
-            
+
             return context;
         }
         update() {

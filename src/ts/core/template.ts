@@ -7,7 +7,7 @@ namespace YJMCNT.Core {
     export class Template {
         constructor() {
         }
-        
+
         render(): JQuery {
             return $();
         }

@@ -5,15 +5,15 @@ namespace YJMCNT.Core {
      * View
      */
     export class View implements Observer, Subject {
-        observerList:Observer[]; 
+        observerList:Observer[];
 
         constructor() {
             this.observerList = [];
         }
-        
+
         update():void {
         }
-        
+
         addObserver(observer:Observer):void {
             this.observerList.push(observer);
         }
@@ -23,7 +23,7 @@ namespace YJMCNT.Core {
                 observer.update();
             }
         }
-        
+
         render(): JQuery {
             return $();
         }
