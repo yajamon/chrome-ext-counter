@@ -5,7 +5,7 @@ namespace YJMCNT.Core {
     export class Controller implements Observer {
         constructor() {
         }
-        
+
         update():void {
         }
     }

@@ -5,12 +5,12 @@ namespace YJMCNT.Core {
      * Model
      */
     export class Model implements Subject{
-        observerList:Core.Observer[]; 
+        observerList:Core.Observer[];
 
         constructor() {
             this.observerList = [];
         }
-        
+
         addObserver(observer:Observer):void {
             this.observerList.push(observer);
         }

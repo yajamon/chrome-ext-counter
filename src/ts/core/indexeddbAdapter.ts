@@ -13,7 +13,7 @@ namespace YJMCNT.Core {
             }
             IndexedDBAdapter._instance = this;
         }
-        
+
         /**
          * getInstance
          */
@@ -23,7 +23,7 @@ namespace YJMCNT.Core {
             }
             return IndexedDBAdapter._instance;
         }
-        
+
         /**
          * open
          */
@@ -31,7 +31,7 @@ namespace YJMCNT.Core {
             if (this.db){
                 return;
             }
-            
+
             var openRequest = indexedDB.open(name, version);
             openRequest.onsuccess = (event)=>{
                 this.db = openRequest.result;
@@ -40,7 +40,7 @@ namespace YJMCNT.Core {
                 migraterList.migration(event);
             };
         }
-        
+
         /**
          * closeDatabase
          */
@@ -50,7 +50,7 @@ namespace YJMCNT.Core {
             }
             this.db.close();
         }
-        
+
         /**
          * deleteDatabase
          */

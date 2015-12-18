@@ -1,5 +1,7 @@
 /// <reference path="../core/view" />
 /// <reference path="../model/counter" />
+/// <reference path="../template/counter" />
+/// <reference path="../template/addCounter" />
 
 namespace YJMCNT {
     /**
@@ -7,39 +9,23 @@ namespace YJMCNT {
      */
     export class CounterView extends Core.View {
         counter:Counter;
-        
+
         constructor() {
             super();
             this.counter = new Counter();
             this.counter.addObserver(this);
         }
         render() {
-            var counter = $("<div>");
-            var countView = $("<span>");
-            countView.addClass("count");
-            countView.html( "count: "+this.counter.show().toString() );
-            
-            var manipulate = $("<div>");
-            manipulate.addClass("manipulate");
-            
-            var countUpButton = $("<button>");
-            countUpButton.html("Up");
-            countUpButton.addClass("countUp");
-            countUpButton.appendTo(manipulate);
-            
-            var countDownButton = $("<button>");
-            countDownButton.html("Down");
-            countDownButton.addClass("countDown");
-            countDownButton.appendTo(manipulate);
-            
-            var countResetButton = $("<button>");
-            countResetButton.html("Reset");
-            countResetButton.addClass("countReset");
-            countResetButton.appendTo(manipulate);
-            
-            counter.append(countView);
-            counter.append(manipulate);
-            return counter;
+            var context = $();
+
+            var addCounterTemplate = new AddCounterTemplate();
+            context = addCounterTemplate.render();
+
+            var counterTemplate = new CounterTemplate();
+            counterTemplate.count = this.counter.show();
+            context = context.add(counterTemplate.render());
+
+            return context;
         }
         update() {
             this.notifyObservers();
