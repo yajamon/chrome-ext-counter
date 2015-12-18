@@ -5,13 +5,15 @@ namespace YJMCNT {
      * Counter
      */
     export class Counter extends Core.Model {
+        private _id:string;
         private _value:number;
         private _defaltValue:number;
 
-        constructor() {
+        constructor(id:string) {
             super();
             this.value = 0;
             this.defaltValue = 0;
+            this._id = id;
         }
 
         up (val:number){
@@ -31,6 +33,10 @@ namespace YJMCNT {
 
         show (){
             return this._value;
+        }
+
+        public get id() : string {
+            return this._id;
         }
 
         private set value(v : number) {
