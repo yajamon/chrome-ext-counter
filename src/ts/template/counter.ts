@@ -13,6 +13,8 @@ namespace YJMCNT {
         
         render() {
             var counter = $("<div>");
+            counter.addClass("counter");
+
             var countView = $("<span>");
             countView.addClass("count");
             countView.html( "count: "+this.count.toString() );
