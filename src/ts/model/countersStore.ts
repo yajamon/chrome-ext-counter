@@ -31,6 +31,21 @@ namespace YJMCNT {
         }
 
         /**
+         * getById
+         */
+        public getById(id: string, callback: (counter: Counter) => void) {
+            var counter: Counter = null;
+            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
+            var store = transaction.objectStore(this.storeName);
+            var request = store.get(id);
+            request.onsuccess = (event) => {
+                var target = <IDBRequest>event.target;
+                var data: CountersSchema = target.result;
+                callback(Counter.deserialize(data));
+            }
+        }
+
+        /**
          * getAll
          */
         public getAll(callback: (counterList: Counter[]) => void) {
