@@ -8,7 +8,7 @@ namespace YJMCNT {
     export class Counter extends Core.Model {
         private _id:string;
         private _value:number;
-        private _defaltValue:number;
+        private _defaltValue: number;
 
         constructor() {
             super();
@@ -46,7 +46,7 @@ namespace YJMCNT {
             return counter;
         }
 
-        up (val:number){
+        up(val: number) {
             this.value += val;
             this.notifyObservers();
         }
