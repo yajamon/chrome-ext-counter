@@ -9,6 +9,7 @@ namespace YJMCNT {
             super();
         }
 
+        id: string = "";
         count:number = 0;
 
         render() {
@@ -19,6 +20,10 @@ namespace YJMCNT {
             countView.addClass("count");
             countView.html("count: " + this.count.toString());
 
+            var countId = $("<input>");
+            countId.attr("type", "hidden");
+            countId.addClass("id");
+            countId.val(this.id);
 
             var manipulate = $("<div>");
             manipulate.addClass("manipulate");
@@ -39,6 +44,7 @@ namespace YJMCNT {
             countResetButton.appendTo(manipulate);
 
             counter.append(countView);
+            counter.append(countId);
             counter.append(manipulate);
             return counter;
 
