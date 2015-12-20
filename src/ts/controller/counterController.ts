@@ -65,13 +65,25 @@ namespace YJMCNT {
             var downButton = hasButtonsDom.find(".countDown");
             downButton.on("click", (e) => {
                 e.preventDefault();
-                this.counter.down(1);
+                var button = $(e.target);
+                var id = button.closest(".counter").find(".id").val();
+                new Promise((resolve) => {
+                    this.countersStore.getById(id, resolve);
+                }).then((counter: Counter) => {
+                    counter.down(1);
+                });
             });
 
             var resetButton = hasButtonsDom.find(".countReset");
             resetButton.on("click", (e) => {
                 e.preventDefault();
-                this.counter.reset();
+                var button = $(e.target);
+                var id = button.closest(".counter").find(".id").val();
+                new Promise((resolve) => {
+                    this.countersStore.getById(id, resolve);
+                }).then((counter: Counter) => {
+                    counter.reset();
+                });
             });
         }
 

@@ -58,12 +58,12 @@ namespace YJMCNT {
 
         down (val:number){
             this.value -= val;
-            this.notifyObservers();
+            this.saveToStore();
         }
 
         reset (){
             this.value = this.defaltValue;
-            this.notifyObservers();
+            this.saveToStore();
         }
 
         saveToStore () {
