@@ -1,8 +1,9 @@
 /// <reference path="../core/view" />
 /// <reference path="../model/countersStore" />
 /// <reference path="../model/counter" />
-/// <reference path="../template/counter" />
+/// <reference path="../template/counterList" />
 /// <reference path="../template/addCounter" />
+/// <reference path="../../../typings/es6-promise/es6-promise" />
 
 namespace YJMCNT {
     /**
@@ -19,18 +20,36 @@ namespace YJMCNT {
             this.countersStore = new CountersStore();
             this.countersStore.addObserver(this);
         }
-        render() {
-            var context = $();
+        render(callback:(context:JQuery)=>void) {
+            var renderingAddCounter = Promise.resolve();
+            renderingAddCounter.then(() => {
+                var template = new AddCounterTemplate();
+                return template.render();
+            });
 
-            var addCounterTemplate = new AddCounterTemplate();
-            context = addCounterTemplate.render();
+            var renderingCounterList = Promise.resolve();
+            renderingCounterList.then(() => {
+                return new Promise((resolve) => {
+                    this.countersStore.getAll(resolve);
+                });
+            }).then((counters: Counter[]) => {
+                var template = new CounterListTemplate();
+                template.counters = counters;
+                return template.render();
+            });
 
-            var counterTemplate = new CounterTemplate();
-            counterTemplate.count = this.counter.show();
-            context = context.add(counterTemplate.render());
-
-            return context;
+            Promise.all([
+                renderingAddCounter,
+                renderingCounterList,
+            ]).then((values: JQuery[]) => {
+                var context = $();
+                values.forEach((value) => {
+                    context = context.add(value);
+                });
+                callback(context);
+            });
         }
+
         update() {
             this.notifyObservers();
         }
