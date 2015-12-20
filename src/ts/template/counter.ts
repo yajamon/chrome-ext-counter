@@ -17,7 +17,8 @@ namespace YJMCNT {
 
             var countView = $("<span>");
             countView.addClass("count");
-            countView.html( "count: "+this.count.toString() );
+            countView.html("count: " + this.count.toString());
+
 
             var manipulate = $("<div>");
             manipulate.addClass("manipulate");
