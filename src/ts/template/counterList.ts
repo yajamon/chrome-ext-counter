@@ -20,6 +20,7 @@ namespace YJMCNT {
                 var counter = this.counters[index];
                 var template = new CounterTemplate();
                 template.count = counter.show();
+                template.id = counter.id;
                 context.append(template.render());
             }
 
