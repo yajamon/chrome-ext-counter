@@ -10,10 +10,13 @@ namespace YJMCNT {
         private _value:number;
         private _defaltValue: number;
 
+        static observerList: Core.Observer[] = [];
+
         storeName = "counters";
 
         constructor() {
             super();
+            this.observerList = Counter.observerList;
             this._id = this.generateUUID();
             this.value = 0;
             this.defaltValue = 0;
