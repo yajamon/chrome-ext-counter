@@ -53,13 +53,7 @@ namespace YJMCNT {
 
         up(val: number) {
             this.value += val;
-
-            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
-            var store = transaction.objectStore(this.storeName);
-            var request = store.put(this.serialize());
-            request.onsuccess = (event) => {
-                this.notifyObservers();
-            }
+            this.saveToStore();
         }
 
         down (val:number){
@@ -70,6 +64,15 @@ namespace YJMCNT {
         reset (){
             this.value = this.defaltValue;
             this.notifyObservers();
+        }
+
+        saveToStore () {
+            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
+            var store = transaction.objectStore(this.storeName);
+            var request = store.put(this.serialize());
+            request.onsuccess = (event) => {
+                this.notifyObservers();
+            }
         }
 
         show (){
