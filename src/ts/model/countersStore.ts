@@ -1,6 +1,13 @@
 /// <reference path="../core/model" />
 
 namespace YJMCNT {
+
+    export interface CountersSchema {
+        id: string,
+        value: number,
+        defaltValue: number,
+    }
+
     /**
      * Counter
      */
