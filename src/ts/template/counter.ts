@@ -43,6 +43,11 @@ namespace YJMCNT {
             countResetButton.addClass("countReset");
             countResetButton.appendTo(manipulate);
 
+            var counterDeleteButton = $("<button>");
+            counterDeleteButton.html("Delete");
+            counterDeleteButton.addClass("counterDelete");
+            counterDeleteButton.appendTo(manipulate);
+
             counter.append(countView);
             counter.append(countId);
             counter.append(manipulate);
