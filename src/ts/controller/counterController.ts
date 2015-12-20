@@ -53,7 +53,13 @@ namespace YJMCNT {
             var upButton = hasButtonsDom.find(".countUp");
             upButton.on("click", (e) => {
                 e.preventDefault();
-                this.counter.up(1);
+                var button = $(e.target);
+                var id = button.closest(".counter").find(".id").val();
+                new Promise((resolve) => {
+                    this.countersStore.getById(id, resolve);
+                }).then((counter: Counter) => {
+                    counter.up(1);
+                });
             });
 
             var downButton = hasButtonsDom.find(".countDown");
