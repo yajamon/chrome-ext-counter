@@ -24,8 +24,8 @@ namespace YJMCNT.Core {
             }
         }
 
-        render(): JQuery {
-            return $();
+        render(callback:(context:JQuery)=>void): void {
+            callback($());
         }
     }
 }

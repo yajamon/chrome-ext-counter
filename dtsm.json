@@ -24,6 +24,9 @@
     },
     "jquery/jquery.d.ts": {
       "ref": "16134c168d021351acb1673ee9659644fc58c424"
+    },
+    "es6-promise/es6-promise.d.ts": {
+      "ref": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
     }
   }
 }

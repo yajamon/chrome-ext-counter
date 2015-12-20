@@ -1,6 +1,13 @@
 /// <reference path="migraterList" />
 
 namespace YJMCNT.Core {
+
+    export interface OpenDatabaseConfig {
+        name: string,
+        version?: number,
+        migraterList?: MigraterList
+    }
+
     /**
      * IndexedDBAdapter
      */
@@ -27,17 +34,19 @@ namespace YJMCNT.Core {
         /**
          * open
          */
-        public openDatabase(name: string, version?: number, migraterList?:MigraterList) {
-            if (this.db){
+        public openDatabase(config: OpenDatabaseConfig, callback: () => void) {
+            if (this.db) {
+                callback();
                 return;
             }
 
-            var openRequest = indexedDB.open(name, version);
+            var openRequest = indexedDB.open(config.name, config.version);
             openRequest.onsuccess = (event)=>{
                 this.db = openRequest.result;
+                callback();
             };
             openRequest.onupgradeneeded = (event:IDBVersionChangeEvent)=>{
-                migraterList.migration(event);
+                config.migraterList.migration(event);
             };
         }
 
