@@ -1,7 +1,6 @@
 /// <reference path="../core/controller" />
 /// <reference path="../view/counter" />
 
-
 namespace YJMCNT {
     /**
      * CounterController
@@ -20,23 +19,27 @@ namespace YJMCNT {
         }
 
         show() {
-            var view = this.countView;
-
-            var content = view.render();
-            this.bindManipulate(content);
-
-            this.$element.append(content);
+            var promise = Promise.resolve();
+            promise.then(() => {
+                return new Promise((resolve) => {
+                    this.countView.render(resolve);
+                });
+            }).then((content: JQuery) => {
+                this.bindManipulate(content);
+                this.$element.append(content);
+            });
         }
 
         update() {
-            var view = this.countView;
-
-            this.$element.empty();
-
-            var content = view.render();
-            this.bindManipulate(content);
-
-            this.$element.append(content);
+            var promise = Promise.resolve();
+            promise.then(() => {
+                return new Promise((resolve) => {
+                    this.countView.render(resolve);
+                });
+            }).then((content: JQuery) => {
+                this.bindManipulate(content);
+                this.$element.append(content);
+            });
         }
 
         bindManipulate(hasButtonsDom: JQuery) {
