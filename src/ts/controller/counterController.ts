@@ -85,6 +85,18 @@ namespace YJMCNT {
                     counter.reset();
                 });
             });
+
+            var deleteButton = hasButtonsDom.find(".counterDelete");
+            deleteButton.on("click", (e) => {
+                e.preventDefault();
+                var button = $(e.target);
+                var id = button.closest(".counter").find(".id").val();
+                new Promise((resolve) => {
+                    this.countersStore.getById(id, resolve);
+                }).then((counter: Counter) => {
+                    counter.removeFromStore();
+                });
+            });
         }
 
     }
