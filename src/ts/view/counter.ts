@@ -22,13 +22,13 @@ namespace YJMCNT {
         }
         render(callback:(context:JQuery)=>void) {
             var renderingAddCounter = Promise.resolve();
-            renderingAddCounter.then(() => {
+            renderingAddCounter = renderingAddCounter.then(() => {
                 var template = new AddCounterTemplate();
                 return template.render();
             });
 
             var renderingCounterList = Promise.resolve();
-            renderingCounterList.then(() => {
+            renderingCounterList = renderingCounterList.then(() => {
                 return new Promise((resolve) => {
                     this.countersStore.getAll(resolve);
                 });
