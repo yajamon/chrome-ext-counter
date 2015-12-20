@@ -75,6 +75,15 @@ namespace YJMCNT {
             }
         }
 
+        removeFromStore() {
+            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
+            var store = transaction.objectStore(this.storeName);
+            var request = store.delete(this.id);
+            request.onsuccess = (event) => {
+                this.notifyObservers();
+            }
+        }
+
         show() {
             return this._value;
         }
