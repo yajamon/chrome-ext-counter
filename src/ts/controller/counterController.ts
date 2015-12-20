@@ -43,7 +43,7 @@ namespace YJMCNT {
             var addButton = hasButtonsDom.find(".addCounter");
             addButton.on("click", (e)=>{
                 e.preventDefault();
-                this.countersStore.add();
+                this.countersStore.add(Counter.make().serialize());
             });
 
             var upButton = hasButtonsDom.find(".countUp");
