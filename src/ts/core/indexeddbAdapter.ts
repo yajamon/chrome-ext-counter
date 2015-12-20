@@ -34,14 +34,16 @@ namespace YJMCNT.Core {
         /**
          * open
          */
-        public openDatabase(config:OpenDatabaseConfig) {
-            if (this.db){
+        public openDatabase(config: OpenDatabaseConfig, callback: () => void) {
+            if (this.db) {
+                callback();
                 return;
             }
 
             var openRequest = indexedDB.open(config.name, config.version);
             openRequest.onsuccess = (event)=>{
                 this.db = openRequest.result;
+                callback();
             };
             openRequest.onupgradeneeded = (event:IDBVersionChangeEvent)=>{
                 config.migraterList.migration(event);
