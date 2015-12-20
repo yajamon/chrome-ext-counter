@@ -21,10 +21,10 @@ namespace YJMCNT {
         /**
          * add
          */
-        public add() {
+        public add(counter :CountersSchema) {
             var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
             var store = transaction.objectStore(this.storeName);
-            var request = store.add(this.createDefaultData());
+            var request = store.add(counter);
             request.onsuccess = (event)=>{
                 this.notifyObservers();
             };
