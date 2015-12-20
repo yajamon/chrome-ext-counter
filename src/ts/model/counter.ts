@@ -29,6 +29,23 @@ namespace YJMCNT {
             });
         }
 
+        serialize(): CountersSchema {
+            var data: CountersSchema = {
+                id: this._id,
+                value: this.value,
+                defaltValue: this.defaltValue,
+            };
+            return data;
+        }
+
+        static deserialize(data:CountersSchema):Counter {
+            var counter = this.make();
+            counter._id = data.id;
+            counter.value = data.value;
+            counter.defaltValue = data.defaltValue;
+            return counter;
+        }
+
         up (val:number){
             this.value += val;
             this.notifyObservers();
