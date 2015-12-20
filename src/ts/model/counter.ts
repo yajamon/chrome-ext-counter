@@ -10,6 +10,8 @@ namespace YJMCNT {
         private _value:number;
         private _defaltValue: number;
 
+        storeName = "counters";
+
         constructor() {
             super();
             this._id = this.generateUUID();
@@ -48,7 +50,13 @@ namespace YJMCNT {
 
         up(val: number) {
             this.value += val;
-            this.notifyObservers();
+
+            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
+            var store = transaction.objectStore(this.storeName);
+            var request = store.put(this.serialize());
+            request.onsuccess = (event) => {
+                this.notifyObservers();
+            }
         }
 
         down (val:number){
