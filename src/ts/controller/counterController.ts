@@ -37,6 +37,7 @@ namespace YJMCNT {
                     this.countView.render(resolve);
                 });
             }).then((content: JQuery) => {
+                this.$element.empty();
                 this.bindManipulate(content);
                 this.$element.append(content);
             });
