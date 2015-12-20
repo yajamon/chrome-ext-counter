@@ -29,5 +29,28 @@ namespace YJMCNT {
                 this.notifyObservers();
             };
         }
+
+        /**
+         * getAll
+         */
+        public getAll(callback: (counterList: Counter[]) => void) {
+            var counters: Counter[] = [];
+            var transaction = this.db.transaction([this.storeName], Config.DB.READWRITE);
+            var store = transaction.objectStore(this.storeName);
+            var request = store.openCursor();
+            request.onsuccess = (event) => {
+                var target = <IDBRequest>event.target;
+                var cursor: IDBCursorWithValue = target.result;
+
+                if (!!cursor == false) {
+                    callback(counters);
+                    return;
+                }
+                var data:CountersSchema = cursor.value;
+                counters.push(Counter.deserialize(data));
+                cursor.continue();
+            }
+
+        }
     }
 }
