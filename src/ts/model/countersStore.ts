@@ -29,12 +29,5 @@ namespace YJMCNT {
                 this.notifyObservers();
             };
         }
-
-        private createDefaultData() {
-            return {
-                id : '1234567890',
-                value : 0,
-            }
-        }
     }
 }
