@@ -25,6 +25,17 @@ h1 {
 
     .counter {
         height: (@minimumHeight+@buttonMargin)*2;
+        position: relative;
+
+        .count {
+            position: absolute;
+            margin: auto;
+            display: block;
+            top: 0;
+            bottom: 0;
+            height: 1em;
+            font-size: 125%;
+        }
 
         .manipulate {
             display: inline-block;
