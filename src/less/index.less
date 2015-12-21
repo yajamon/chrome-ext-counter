@@ -7,13 +7,68 @@ h1 {
 .yjmcnt-index {
     width: 320px;
     position: relative;
+    padding-left: 2em;
+    @minimumWidth : 44px;
+    @minimumHeight : 30px;
+    @buttonMargin : 1px;
+
+    .addCounter {
+        .manipulate {
+            overflow: hidden;
+            padding: 10px;
+            button {
+                height: @minimumHeight;
+                width: @minimumWidth*2;
+                float: right;
+            }
+        }
+    }
 
     .counter {
+        height: (@minimumHeight+@buttonMargin)*2;
+        position: relative;
+        margin-bottom: 5px;
+        border-bottom: solid 3px skyblue;
+        padding-bottom: 2px;
+
+        .count {
+            position: absolute;
+            margin: auto;
+            display: block;
+            top: 0;
+            bottom: 0;
+            height: 1em;
+            font-size: 125%;
+        }
+
         .manipulate {
             display: inline-block;
             width: 60%;
             position: absolute;
             right: 0;
+
+            button {
+                height: @minimumHeight;
+                width: @minimumWidth;
+                position: absolute;
+                margin: @buttonMargin;
+            }
+            .countUp {
+                top: 0;
+                left: 0;
+            }
+            .countDown {
+                top: @minimumHeight+@buttonMargin;
+                left: 0;
+            }
+            .countReset {
+                left: @minimumWidth+@buttonMargin;
+                height: (@minimumHeight*2)+@buttonMargin;
+            }
+            .counterDelete {
+                left: (@minimumWidth+@buttonMargin)*2;
+                height: (@minimumHeight*2)+@buttonMargin;
+            }
         }
     }
 }
