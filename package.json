@@ -1,12 +1,12 @@
 {
   "name": "chrome-ext-counter",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "description": "chrome-ext-counter",
   "main": "gulpfile.js",
   "scripts": {
     "postinstall": "dtsm install",
     "build": "gulp build",
-    "prewatch":"gulp build",
+    "prewatch": "gulp build",
     "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +25,7 @@
     "gulp": "^3.9.0",
     "gulp-less": "^3.0.3",
     "gulp-typescript": "^2.8.1",
+    "jquery": "^2.1.4",
     "typescript": "^1.5.3"
   }
 }

@@ -1,29 +1,55 @@
+/// <reference path="../core/view" />
+/// <reference path="../model/countersStore" />
+/// <reference path="../model/counter" />
+/// <reference path="../template/counterList" />
+/// <reference path="../template/addCounter" />
+/// <reference path="../../../typings/es6-promise/es6-promise" />
+
 namespace YJMCNT {
     /**
      * CounterView
      */
     export class CounterView extends Core.View {
         counter:Counter;
-        
+        countersStore:CountersStore;
+
         constructor() {
             super();
             this.counter = new Counter();
             this.counter.addObserver(this);
+            this.countersStore = new CountersStore();
+            this.countersStore.addObserver(this);
         }
-        render() {
-            var counter = document.createElement("div");
-            var countView = document.createElement("span");
-            countView.classList.add("count");
-            countView.innerText = "count: "+this.counter.show().toString();
-            
-            var countUpButton:HTMLButtonElement = document.createElement("button");
-            countUpButton.innerHTML = "Up";
-            countUpButton.classList.add("countUp");
-            
-            counter.appendChild(countView);
-            counter.appendChild(countUpButton);
-            return counter;
+        render(callback:(context:JQuery)=>void) {
+            var renderingAddCounter = Promise.resolve();
+            renderingAddCounter = renderingAddCounter.then(() => {
+                var template = new AddCounterTemplate();
+                return template.render();
+            });
+
+            var renderingCounterList = Promise.resolve();
+            renderingCounterList = renderingCounterList.then(() => {
+                return new Promise((resolve) => {
+                    this.countersStore.getAll(resolve);
+                });
+            }).then((counters: Counter[]) => {
+                var template = new CounterListTemplate();
+                template.counters = counters;
+                return template.render();
+            });
+
+            Promise.all([
+                renderingAddCounter,
+                renderingCounterList,
+            ]).then((values: JQuery[]) => {
+                var context = $();
+                values.forEach((value) => {
+                    context = context.add(value);
+                });
+                callback(context);
+            });
         }
+
         update() {
             this.notifyObservers();
         }

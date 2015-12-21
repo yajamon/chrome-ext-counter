@@ -1,14 +1,16 @@
+/// <reference path="indexeddbAdapter" />
+
 namespace YJMCNT.Core {
     /**
      * Model
      */
     export class Model implements Subject{
-        observerList:Core.Observer[]; 
+        observerList:Core.Observer[];
 
         constructor() {
             this.observerList = [];
         }
-        
+
         addObserver(observer:Observer):void {
             this.observerList.push(observer);
         }
@@ -18,5 +20,10 @@ namespace YJMCNT.Core {
                 observer.update();
             }
         }
+
+        protected get db() :IDBDatabase {
+            return IndexedDBAdapter.getInstance().db;
+        }
+
     }
 }
