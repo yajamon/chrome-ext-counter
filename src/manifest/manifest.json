@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "counterExt",
-    "version": "0.1.0",
+    "version": "0.4.0",
 
     "description": "シンプルなカウンター拡張",
     "icons": {
