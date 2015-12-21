@@ -7,13 +7,39 @@ h1 {
 .yjmcnt-index {
     width: 320px;
     position: relative;
+    @minimumWidth : 44px;
+    @minimumHeight : 30px;
+    @buttonMargin : 1px;
 
     .counter {
+        height: (@minimumHeight+@buttonMargin)*2;
+
         .manipulate {
             display: inline-block;
             width: 60%;
             position: absolute;
             right: 0;
+
+            button {
+                height: @minimumHeight;
+                width: @minimumWidth;
+                position: absolute;
+                margin: @buttonMargin;
+            }
+            .countUp {
+                top: 0;
+                left: 0;
+            }
+            .countDown {
+                top: @minimumHeight+@buttonMargin;
+                left: 0;
+            }
+            .countReset {
+                left: @minimumWidth+@buttonMargin;
+            }
+            .counterDelete {
+                left: (@minimumWidth+@buttonMargin)*2;
+            }
         }
     }
 }
