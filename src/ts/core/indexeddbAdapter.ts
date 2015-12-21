@@ -4,8 +4,8 @@ namespace YJMCNT.Core {
 
     export interface OpenDatabaseConfig {
         name: string,
-        version?: number,
-        migraterList?: MigraterList
+        version: number,
+        migraterList: MigraterList
     }
 
     /**
