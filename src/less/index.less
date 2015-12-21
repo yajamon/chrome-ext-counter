@@ -11,6 +11,18 @@ h1 {
     @minimumHeight : 30px;
     @buttonMargin : 1px;
 
+    .addCounter {
+        .manipulate {
+            overflow: hidden;
+            padding: 10px;
+            button {
+                height: @minimumHeight;
+                width: @minimumWidth*2;
+                float: right;
+            }
+        }
+    }
+
     .counter {
         height: (@minimumHeight+@buttonMargin)*2;
 
