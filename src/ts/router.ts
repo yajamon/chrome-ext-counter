@@ -1,9 +1,8 @@
-/// <reference path="../../typings/jquery/jquery" />
 /// <reference path="controller/counterController" />
 
 function routing() {
-    var dom = $('.yjmcnt-index');
-    if (dom != null) {
+    var dom = document.querySelector('.yjmcnt-index');
+    if (dom instanceof HTMLElement) {
         var counter = new YJMCNT.CounterController(dom);
         counter.show();
     }

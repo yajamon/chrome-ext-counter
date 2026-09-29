@@ -14,14 +14,14 @@ namespace YJMCNT {
         counters: Counter[];
 
         render() {
-            var context = $("<div>");
+            var context = document.createElement("div");
 
             for (var index = 0; index < this.counters.length; index++) {
                 var counter = this.counters[index];
                 var template = new CounterTemplate();
                 template.count = counter.show();
                 template.id = counter.id;
-                context.append(template.render());
+                context.appendChild(template.render());
             }
 
             return context;

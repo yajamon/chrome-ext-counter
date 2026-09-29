@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/jquery/jquery" />
-
 namespace YJMCNT.Core {
     /**
      * Template
@@ -8,8 +6,8 @@ namespace YJMCNT.Core {
         constructor() {
         }
 
-        render(): JQuery {
-            return $();
+        render(): HTMLElement {
+            return document.createElement("div");
         }
     }
 }

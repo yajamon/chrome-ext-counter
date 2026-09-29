@@ -10,18 +10,18 @@ namespace YJMCNT {
         }
 
         render() {
-            var counter = $("<div>");
-            counter.addClass("addCounter");
+            var counter = document.createElement("div");
+            counter.classList.add("addCounter");
 
-            var manipulate = $("<div>");
-            manipulate.addClass("manipulate");
+            var manipulate = document.createElement("div");
+            manipulate.classList.add("manipulate");
 
-            var addCounterButton = $("<button>");
-            addCounterButton.html("addCounter");
-            addCounterButton.addClass("addCounter");
-            addCounterButton.appendTo(manipulate);
+            var addCounterButton = document.createElement("button");
+            addCounterButton.textContent = "addCounter";
+            addCounterButton.classList.add("addCounter");
+            manipulate.appendChild(addCounterButton);
 
-            counter.append(manipulate);
+            counter.appendChild(manipulate);
             return counter;
         }
     }

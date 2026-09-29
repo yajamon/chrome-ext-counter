@@ -13,44 +13,44 @@ namespace YJMCNT {
         count:number = 0;
 
         render() {
-            var counter = $("<div>");
-            counter.addClass("counter");
+            var counter = document.createElement("div");
+            counter.classList.add("counter");
 
-            var countView = $("<span>");
-            countView.addClass("count");
-            countView.html("count: " + this.count.toString());
+            var countView = document.createElement("span");
+            countView.classList.add("count");
+            countView.textContent = "count: " + this.count.toString();
 
-            var countId = $("<input>");
-            countId.attr("type", "hidden");
-            countId.addClass("id");
-            countId.val(this.id);
+            var countId = document.createElement("input");
+            countId.type = "hidden";
+            countId.classList.add("id");
+            countId.value = this.id;
 
-            var manipulate = $("<div>");
-            manipulate.addClass("manipulate");
+            var manipulate = document.createElement("div");
+            manipulate.classList.add("manipulate");
 
-            var countUpButton = $("<button>");
-            countUpButton.html("Up");
-            countUpButton.addClass("countUp");
-            countUpButton.appendTo(manipulate);
+            var countUpButton = document.createElement("button");
+            countUpButton.textContent = "Up";
+            countUpButton.classList.add("countUp");
+            manipulate.appendChild(countUpButton);
 
-            var countDownButton = $("<button>");
-            countDownButton.html("Down");
-            countDownButton.addClass("countDown");
-            countDownButton.appendTo(manipulate);
+            var countDownButton = document.createElement("button");
+            countDownButton.textContent = "Down";
+            countDownButton.classList.add("countDown");
+            manipulate.appendChild(countDownButton);
 
-            var countResetButton = $("<button>");
-            countResetButton.html("Reset");
-            countResetButton.addClass("countReset");
-            countResetButton.appendTo(manipulate);
+            var countResetButton = document.createElement("button");
+            countResetButton.textContent = "Reset";
+            countResetButton.classList.add("countReset");
+            manipulate.appendChild(countResetButton);
 
-            var counterDeleteButton = $("<button>");
-            counterDeleteButton.html("Delete");
-            counterDeleteButton.addClass("counterDelete");
-            counterDeleteButton.appendTo(manipulate);
+            var counterDeleteButton = document.createElement("button");
+            counterDeleteButton.textContent = "Delete";
+            counterDeleteButton.classList.add("counterDelete");
+            manipulate.appendChild(counterDeleteButton);
 
-            counter.append(countView);
-            counter.append(countId);
-            counter.append(manipulate);
+            counter.appendChild(countView);
+            counter.appendChild(countId);
+            counter.appendChild(manipulate);
             return counter;
 
         }

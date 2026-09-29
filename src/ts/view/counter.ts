@@ -20,7 +20,7 @@ namespace YJMCNT {
             this.countersStore = new CountersStore();
             this.countersStore.addObserver(this);
         }
-        render(callback:(context:JQuery)=>void) {
+        render(callback:(context:DocumentFragment)=>void) {
             var renderingAddCounter = Promise.resolve();
             renderingAddCounter = renderingAddCounter.then(() => {
                 var template = new AddCounterTemplate();
@@ -41,10 +41,10 @@ namespace YJMCNT {
             Promise.all([
                 renderingAddCounter,
                 renderingCounterList,
-            ]).then((values: JQuery[]) => {
-                var context = $();
+            ]).then((values: HTMLElement[]) => {
+                var context = document.createDocumentFragment();
                 values.forEach((value) => {
-                    context = context.add(value);
+                    context.appendChild(value);
                 });
                 callback(context);
             });

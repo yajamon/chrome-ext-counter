@@ -2,7 +2,7 @@
 /// <reference path="core/indexeddbAdapter" />
 /// <reference path="router" />
 
-$(function() {
+function bootstrap() {
     var config = YJMCNT.Config;
 
     var adapter = YJMCNT.Core.IndexedDBAdapter.getInstance();
@@ -14,4 +14,10 @@ $(function() {
     }).then(() => {
         return routing();
     });
-});
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootstrap);
+} else {
+    bootstrap();
+}

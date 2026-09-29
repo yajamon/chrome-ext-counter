@@ -10,7 +10,7 @@ namespace YJMCNT {
         counter: Counter;
         countView: CounterView;
 
-        constructor(private $element: JQuery) {
+        constructor(private element: HTMLElement) {
             super();
             this.countView = new CounterView();
             this.countView.addObserver(this);
@@ -24,9 +24,9 @@ namespace YJMCNT {
                 return new Promise((resolve) => {
                     this.countView.render(resolve);
                 });
-            }).then((content: JQuery) => {
+            }).then((content: DocumentFragment) => {
                 this.bindManipulate(content);
-                this.$element.append(content);
+                this.element.appendChild(content);
             });
         }
 
@@ -36,66 +36,75 @@ namespace YJMCNT {
                 return new Promise((resolve) => {
                     this.countView.render(resolve);
                 });
-            }).then((content: JQuery) => {
-                this.$element.empty();
+            }).then((content: DocumentFragment) => {
+                while (this.element.firstChild) {
+                    this.element.removeChild(this.element.firstChild);
+                }
                 this.bindManipulate(content);
-                this.$element.append(content);
+                this.element.appendChild(content);
             });
         }
 
-        bindManipulate(hasButtonsDom: JQuery) {
-            var addButton = hasButtonsDom.find(".addCounter");
-            addButton.on("click", (e)=>{
-                e.preventDefault();
-                this.countersStore.add(Counter.make().serialize());
-            });
-
-            var upButton = hasButtonsDom.find(".countUp");
-            upButton.on("click", (e) => {
-                e.preventDefault();
-                var button = $(e.target);
-                var id = button.closest(".counter").find(".id").val();
-                new Promise((resolve) => {
-                    this.countersStore.getById(id, resolve);
-                }).then((counter: Counter) => {
-                    counter.up(1);
+        bindManipulate(context: DocumentFragment) {
+            var addButtons = context.querySelectorAll(".addCounter button");
+            for (var addIndex = 0; addIndex < addButtons.length; addIndex++) {
+                addButtons[addIndex].addEventListener("click", (e: Event) => {
+                    e.preventDefault();
+                    this.countersStore.add(Counter.make().serialize());
                 });
-            });
+            }
 
-            var downButton = hasButtonsDom.find(".countDown");
-            downButton.on("click", (e) => {
-                e.preventDefault();
-                var button = $(e.target);
-                var id = button.closest(".counter").find(".id").val();
-                new Promise((resolve) => {
-                    this.countersStore.getById(id, resolve);
-                }).then((counter: Counter) => {
-                    counter.down(1);
+            var upButtons = context.querySelectorAll(".countUp");
+            for (var upIndex = 0; upIndex < upButtons.length; upIndex++) {
+                upButtons[upIndex].addEventListener("click", (e: Event) => {
+                    e.preventDefault();
+                    this.loadCounter(e.currentTarget, (counter: Counter) => counter.up(1));
                 });
-            });
+            }
 
-            var resetButton = hasButtonsDom.find(".countReset");
-            resetButton.on("click", (e) => {
-                e.preventDefault();
-                var button = $(e.target);
-                var id = button.closest(".counter").find(".id").val();
-                new Promise((resolve) => {
-                    this.countersStore.getById(id, resolve);
-                }).then((counter: Counter) => {
-                    counter.reset();
+            var downButtons = context.querySelectorAll(".countDown");
+            for (var downIndex = 0; downIndex < downButtons.length; downIndex++) {
+                downButtons[downIndex].addEventListener("click", (e: Event) => {
+                    e.preventDefault();
+                    this.loadCounter(e.currentTarget, (counter: Counter) => counter.down(1));
                 });
-            });
+            }
 
-            var deleteButton = hasButtonsDom.find(".counterDelete");
-            deleteButton.on("click", (e) => {
-                e.preventDefault();
-                var button = $(e.target);
-                var id = button.closest(".counter").find(".id").val();
-                new Promise((resolve) => {
-                    this.countersStore.getById(id, resolve);
-                }).then((counter: Counter) => {
-                    counter.removeFromStore();
+            var resetButtons = context.querySelectorAll(".countReset");
+            for (var resetIndex = 0; resetIndex < resetButtons.length; resetIndex++) {
+                resetButtons[resetIndex].addEventListener("click", (e: Event) => {
+                    e.preventDefault();
+                    this.loadCounter(e.currentTarget, (counter: Counter) => counter.reset());
                 });
+            }
+
+            var deleteButtons = context.querySelectorAll(".counterDelete");
+            for (var deleteIndex = 0; deleteIndex < deleteButtons.length; deleteIndex++) {
+                deleteButtons[deleteIndex].addEventListener("click", (e: Event) => {
+                    e.preventDefault();
+                    this.loadCounter(e.currentTarget, (counter: Counter) => counter.removeFromStore());
+                });
+            }
+        }
+
+        private loadCounter(button: EventTarget, action: (counter: Counter) => void) {
+            var element = <HTMLElement>button;
+            while (element && !element.classList.contains("counter")) {
+                element = element.parentElement;
+            }
+            if (!element) {
+                return;
+            }
+
+            var idInput = <HTMLInputElement>element.querySelector(".id");
+            if (!idInput) {
+                return;
+            }
+
+            new Promise((resolve) => {
+                this.countersStore.getById(idInput.value, resolve);
+            }).then((counter: Counter) => {
+                action(counter);
             });
         }
 

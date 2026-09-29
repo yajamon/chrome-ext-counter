@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/jquery/jquery" />
-
 namespace YJMCNT.Core {
     /**
      * View
@@ -24,8 +22,8 @@ namespace YJMCNT.Core {
             }
         }
 
-        render(callback:(context:JQuery)=>void): void {
-            callback($());
+        render(callback:(context:DocumentFragment)=>void): void {
+            callback(document.createDocumentFragment());
         }
     }
 }
