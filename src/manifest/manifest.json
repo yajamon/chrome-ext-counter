@@ -1,7 +1,7 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "counterExt",
-    "version": "0.4.1",
+    "version": "0.5.0",
 
     "description": "シンプルなカウンター拡張",
     "icons": {
@@ -10,11 +10,13 @@
         "128": "img/icons/icon128.png"
     },
 
-    "browser_action": {
+    "action": {
         "default_icon": {
-            "19": "img/icons/icon19.png"
+            "16": "img/icons/icon16.png",
+            "48": "img/icons/icon48.png",
+            "128": "img/icons/icon128.png"
         },
-        "default_title": "countExt",
+        "default_title": "CountExt",
         "default_popup": "html/index.html"
     }
 }
