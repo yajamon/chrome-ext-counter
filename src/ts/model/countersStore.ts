@@ -57,7 +57,7 @@ namespace YJMCNT {
                 var target = <IDBRequest>event.target;
                 var cursor: IDBCursorWithValue = target.result;
 
-                if (!!cursor == false) {
+                if (!cursor) {
                     callback(counters);
                     return;
                 }

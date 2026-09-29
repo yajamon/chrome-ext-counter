@@ -1,0 +1,72 @@
+h1 {
+    color: gray;
+}
+
+.yjmcnt-index {
+    width: 320px;
+    position: relative;
+    padding-left: 2em;
+}
+
+.yjmcnt-index .addCounter .manipulate {
+    overflow: hidden;
+    padding: 10px;
+}
+
+.yjmcnt-index .addCounter .manipulate button {
+    height: 30px;
+    width: 120px;
+    float: right;
+}
+
+.yjmcnt-index .counter {
+    height: 62px;
+    position: relative;
+    margin-bottom: 5px;
+    border-bottom: solid 3px skyblue;
+    padding-bottom: 2px;
+}
+
+.yjmcnt-index .counter .count {
+    position: absolute;
+    margin: auto;
+    display: block;
+    top: 0;
+    bottom: 0;
+    height: 1em;
+    font-size: 125%;
+}
+
+.yjmcnt-index .counter .manipulate {
+    display: inline-block;
+    width: 60%;
+    position: absolute;
+    right: 0;
+}
+
+.yjmcnt-index .counter .manipulate button {
+    height: 30px;
+    width: 60px;
+    position: absolute;
+    margin: 1px;
+}
+
+.yjmcnt-index .counter .manipulate .countUp {
+    top: 0;
+    left: 0;
+}
+
+.yjmcnt-index .counter .manipulate .countDown {
+    top: 31px;
+    left: 0;
+}
+
+.yjmcnt-index .counter .manipulate .countReset {
+    left: 61px;
+    height: 61px;
+}
+
+.yjmcnt-index .counter .manipulate .counterDelete {
+    left: 122px;
+    height: 61px;
+}

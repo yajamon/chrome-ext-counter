@@ -8,7 +8,7 @@ function bootstrap() {
     var adapter = YJMCNT.Core.IndexedDBAdapter.getInstance();
     var p = Promise.resolve();
     p.then(() => {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
             adapter.openDatabase(config.DB, resolve);
         });
     }).then(() => {

@@ -21,7 +21,7 @@ namespace YJMCNT {
         show() {
             var promise = Promise.resolve();
             promise.then(() => {
-                return new Promise((resolve) => {
+                return new Promise<DocumentFragment>((resolve) => {
                     this.countView.render(resolve);
                 });
             }).then((content: DocumentFragment) => {
@@ -33,7 +33,7 @@ namespace YJMCNT {
         update() {
             var promise = Promise.resolve();
             promise.then(() => {
-                return new Promise((resolve) => {
+                return new Promise<DocumentFragment>((resolve) => {
                     this.countView.render(resolve);
                 });
             }).then((content: DocumentFragment) => {
@@ -101,7 +101,7 @@ namespace YJMCNT {
                 return;
             }
 
-            new Promise((resolve) => {
+            new Promise<Counter>((resolve) => {
                 this.countersStore.getById(idInput.value, resolve);
             }).then((counter: Counter) => {
                 action(counter);

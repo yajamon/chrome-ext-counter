@@ -3,7 +3,6 @@
 /// <reference path="../model/counter" />
 /// <reference path="../template/counterList" />
 /// <reference path="../template/addCounter" />
-/// <reference path="../../../typings/es6-promise/es6-promise" />
 
 namespace YJMCNT {
     /**
@@ -21,15 +20,13 @@ namespace YJMCNT {
             this.countersStore.addObserver(this);
         }
         render(callback:(context:DocumentFragment)=>void) {
-            var renderingAddCounter = Promise.resolve();
-            renderingAddCounter = renderingAddCounter.then(() => {
+            var renderingAddCounter = Promise.resolve().then(() => {
                 var template = new AddCounterTemplate();
                 return template.render();
             });
 
-            var renderingCounterList = Promise.resolve();
-            renderingCounterList = renderingCounterList.then(() => {
-                return new Promise((resolve) => {
+            var renderingCounterList = Promise.resolve().then(() => {
+                return new Promise<Counter[]>((resolve) => {
                     this.countersStore.getAll(resolve);
                 });
             }).then((counters: Counter[]) => {
@@ -41,7 +38,7 @@ namespace YJMCNT {
             Promise.all([
                 renderingAddCounter,
                 renderingCounterList,
-            ]).then((values: HTMLElement[]) => {
+            ]).then((values: [HTMLElement, HTMLElement]) => {
                 var context = document.createDocumentFragment();
                 values.forEach((value) => {
                     context.appendChild(value);
